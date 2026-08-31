@@ -1,0 +1,26 @@
+schema_version: 1
+site_id: sphereos-docs
+status: BOOTSTRAP
+adoption:
+  implementation_repository: https://github.com/saitoomituru/SphereOS-Atlantis
+  channel: main
+  ref: refs/heads/main
+  development_channel: not-adopted
+  bundle_path: magi/0.2.1/bundle.json
+  resolver_path: magi/0.2.1/resolve_sources.py
+profile:
+  id: zeroroomlab
+  source_repository: https://github.com/saitoomituru/ZeroRoomLab-manifest
+  channel: main
+resolution:
+  network_access: explicit-only
+  implicit_repository_scan: false
+  record_resolved_commit: required
+  receipt_directory: docs/operations/provenance
+temporal_policy:
+  historical_oae_missing: historical-oae-unavailable
+  last_order: stop-retroactive-backfill
+ownership:
+  magi_implementation: saitoomituru/SphereOS-Atlantis
+  cross_repository_policy: saitoomituru/ZeroRoomLab-manifest
+  local_scope: documentation-projection
