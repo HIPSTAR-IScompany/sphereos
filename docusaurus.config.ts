@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // site identityはconfig直書きにせず、CI/localのenv変数から注入する。
 // Q Atlantis Issue #22の実装境界: 旧Q Atlantis domainのhardcodeを持ち込まない。
-const SITE_ID = process.env.SITE_ID ?? 'sphereos-i-s-dev';
+const SITE_ID = process.env.SITE_ID ?? 'sphereos-docs';
 const PUBLICATION_URL = process.env.PUBLICATION_URL ?? 'https://sphere.i-s.dev';
 
 const config: Config = {

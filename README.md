@@ -40,9 +40,9 @@ npm start
 npm ci
 npm run typecheck
 npm run check:domain-hardcode
-SITE_ID=sphereos-i-s-dev PUBLICATION_URL=https://sphere.i-s.dev npm run build
-SITE_ID=sphereos-i-s-dev PUBLICATION_URL=https://sphere.i-s.dev npm run check:seo
-SITE_ID=sphereos-i-s-dev npm run receipt:build
+SITE_ID=sphereos-docs PUBLICATION_URL=https://sphere.i-s.dev npm run build
+SITE_ID=sphereos-docs PUBLICATION_URL=https://sphere.i-s.dev npm run check:seo
+SITE_ID=sphereos-docs npm run receipt:build
 ```
 
 `SITE_ID` / `PUBLICATION_URL` は`.github/workflows/build.yml`のCI既定値と一致させる。config直書きにせず、常にenv経由で注入する。

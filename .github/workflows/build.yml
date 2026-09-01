@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 env:
-  SITE_ID: sphereos-i-s-dev
+  SITE_ID: sphereos-docs
   PUBLICATION_URL: https://sphere.i-s.dev
 
 jobs:
