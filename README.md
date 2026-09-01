@@ -1,6 +1,6 @@
 # SphereOS documentation site
 
-状態: `BOOTSTRAP / NO DOCUSAURUS / NOT DEPLOYED / CONTENT NOT MIGRATED`
+状態: `DOCUSAURUS BUILD READY / NOT DEPLOYED / CONTENT NOT MIGRATED`
 
 SphereOS Atlantis、ASTRO、IBD／IFD、Instance Ghost、MAGI、World Builder等を、利用者から見た統合SDK documentationとして公開するためのsite repositoryです。
 
@@ -20,10 +20,32 @@ ASTROはstandalone componentです。本siteへ掲載することは、Atlantis 
 
 - repository／governance scaffold: 設置済み
 - MAGI採用channel: `main`
-- Docusaurus: 未実装（[`Q Atlantis #22`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/22)）
-- Sakura deploy: 未実装（[`Q Atlantis #23`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/23)）
+- Docusaurus: 実装済み（`npm ci && npm run build`が独立repositoryで再現可能。[`Q Atlantis #22`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/22)）
+- Sakura deploy: 未実装（[`Q Atlantis #23`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/23)。CIはbuild jobのみで、deploy jobは意図的に持たない）
 - content migration: 未着手（[`Q Atlantis #26`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/26)）
 - `sphere.i-s.dev`既存site退避: User作業待ち
+
+## local preview
+
+```console
+npm ci
+npm start
+```
+
+`http://localhost:3000/` でplaceholder siteを確認できます。
+
+## build と検査
+
+```console
+npm ci
+npm run typecheck
+npm run check:domain-hardcode
+SITE_ID=sphereos-i-s-dev PUBLICATION_URL=https://sphere.i-s.dev npm run build
+SITE_ID=sphereos-i-s-dev PUBLICATION_URL=https://sphere.i-s.dev npm run check:seo
+SITE_ID=sphereos-i-s-dev npm run receipt:build
+```
+
+`SITE_ID` / `PUBLICATION_URL` は`.github/workflows/build.yml`のCI既定値と一致させる。config直書きにせず、常にenv経由で注入する。
 
 ## directory
 

@@ -1,0 +1,62 @@
+name: Build SphereOS documentation site
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+env:
+  SITE_ID: sphereos-i-s-dev
+  PUBLICATION_URL: https://sphere.i-s.dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Domain hardcode check
+        run: npm run check:domain-hardcode
+
+      - name: Build (Docusaurus, ja locale)
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Verify build output
+        run: |
+          test -d build || (echo "build directory missing" && exit 1)
+          test -f build/index.html || (echo "index.html missing" && exit 1)
+
+      - name: SEO metadata check (canonical / JSON-LD / sitemap)
+        run: npm run check:seo
+
+      - name: Write build receipt
+        run: npm run receipt:build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-build
+          path: build/
+          retention-days: 7
+
+  # deploy job(Sakura / DNS / vhost)はQ Atlantis Issue #23のscope。
+  # sphere.i-s.devの既存WordPress/WooCommerce/DNS/docrootが未退避のため、
+  # 本repositoryではbuild検証までとし、deployを主張しない。
