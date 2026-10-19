@@ -49,5 +49,6 @@
   },
   "overrides": {
     "webpack": "5.99.7"
-  }
+  },
+  "packageManager": "npm@10.8.2"
 }

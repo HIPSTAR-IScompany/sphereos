@@ -31,3 +31,5 @@ buildは日本語とen-USを生成します。prebuildで日英pair・出典を�
 ## license
 
 文書はCC BY 4.0、code／workflow／validatorはApache-2.0。個別credit・第三者licenseは優先します。root LICENSEのみを根拠に文章を再licenseしません。詳細は[LICENSE-POLICY.ja.md](LICENSE-POLICY.ja.md)。
+
+CIの固定toolchainはNode.js 20.20.2 / npm 10.8.2です。`.nvmrc`と`packageManager`を照合し、build artifactには`.well-known`のreceiptも含めます。

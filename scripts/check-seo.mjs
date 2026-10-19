@@ -1,66 +1,56 @@
-// buildされたHTML出力から、canonical／JSON-LD／sitemapがPUBLICATION_URLへ
-// 正しく紐づいていることを検査する。content移植前のためblog frontmatter等は対象外。
+// 日本語正本とen-US写本の生成結果を検査する。公開先の到達性は検査しない。
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const root = process.cwd();
-const buildDir = join(root, 'build');
-const PUBLICATION_URL = (process.env.PUBLICATION_URL ?? 'https://sphere.i-s.dev').replace(/\/$/, '');
-
+const buildDir = join(process.cwd(), 'build');
+const publicationUrl = (process.env.PUBLICATION_URL ?? 'https://sphere.i-s.dev').replace(/\/$/, '');
 const failures = [];
 
-const indexPath = join(buildDir, 'index.html');
-if (!existsSync(indexPath)) {
-  console.error(`SEO検査に失敗しました。\n- ${indexPath} が見つかりません。先に npm run build を実行してください。`);
-  process.exit(1);
-}
-
-const html = readFileSync(indexPath, 'utf8');
-
-const canonicalTags = html.match(/<link[^>]*>/g) ?? [];
-const hasCanonical = canonicalTags.some(
-  (tag) => /rel="canonical"/.test(tag) && tag.includes(`href="${PUBLICATION_URL}/"`),
-);
-if (!hasCanonical) {
-  failures.push(`index.html: canonical linkが ${PUBLICATION_URL}/ を指していません`);
-}
-
-const ogUrlTags = html.match(/<meta[^>]*>/g) ?? [];
-const hasOgUrl = ogUrlTags.some(
-  (tag) => /property="og:url"/.test(tag) && tag.includes(`content="${PUBLICATION_URL}/"`),
-);
-if (!hasOgUrl) {
-  failures.push(`index.html: og:url metaが ${PUBLICATION_URL}/ を指していません`);
-}
-
-const jsonLdMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-if (!jsonLdMatch) {
-  failures.push('index.html: JSON-LD scriptがありません');
-} else {
-  try {
-    const jsonLd = JSON.parse(jsonLdMatch[1]);
-    if (jsonLd.url !== `${PUBLICATION_URL}/`) {
-      failures.push(`index.html: JSON-LD urlが ${PUBLICATION_URL}/ ではありません (${jsonLd.url})`);
+for (const locale of [
+  { path: 'index.html', url: publicationUrl + '/', language: 'ja-JP', sitemap: 'sitemap.xml' },
+  { path: 'en/index.html', url: publicationUrl + '/en/', language: 'en-US', sitemap: 'en/sitemap.xml' },
+]) {
+  const fullPath = join(buildDir, locale.path);
+  if (!existsSync(fullPath)) {
+    failures.push(locale.path + ': 生成されていません');
+    continue;
+  }
+  const html = readFileSync(fullPath, 'utf8');
+  const links = html.match(/<link\b[^>]*>/g) ?? [];
+  const metas = html.match(/<meta\b[^>]*>/g) ?? [];
+  if (!new RegExp('<html[^>]*lang="' + locale.language + '"').test(html)) {
+    failures.push(locale.path + ': html langが ' + locale.language + ' ではありません');
+  }
+  if (!links.some(tag => /rel="canonical"/.test(tag) && tag.includes('href="' + locale.url + '"'))) {
+    failures.push(locale.path + ': canonicalが ' + locale.url + ' を指していません');
+  }
+  if (!metas.some(tag => /property="og:url"/.test(tag) && tag.includes('content="' + locale.url + '"'))) {
+    failures.push(locale.path + ': og:urlがcanonicalと一致しません');
+  }
+  for (const property of ['og:title', 'og:type']) {
+    if (!metas.some(tag => tag.includes('property="' + property + '"') && /content="[^"]+"/.test(tag))) {
+      failures.push(locale.path + ': ' + property + ' がありません');
     }
+  }
+  if (!metas.some(tag => /name="twitter:card"/.test(tag) && /content="summary(?:_large_image)?"/.test(tag))) {
+    failures.push(locale.path + ': Twitter cardがありません');
+  }
+  const jsonLdMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  try {
+    const jsonLd = JSON.parse(jsonLdMatch?.[1] ?? '');
+    if (jsonLd.url !== publicationUrl + '/') throw new Error('WebSite url');
+    if (!['ja-JP', 'en-US'].every(language => jsonLd.inLanguage?.includes(language))) throw new Error('inLanguage');
   } catch {
-    failures.push('index.html: JSON-LDがJSONとして解析できません');
+    failures.push(locale.path + ': WebSite JSON-LDのurlまたは言語が不正です');
+  }
+  const sitemapPath = join(buildDir, locale.sitemap);
+  if (!existsSync(sitemapPath) || !readFileSync(sitemapPath, 'utf8').includes(locale.url)) {
+    failures.push(locale.sitemap + ': locale URLがありません');
   }
 }
 
-const sitemapPath = join(buildDir, 'sitemap.xml');
-if (!existsSync(sitemapPath)) {
-  failures.push('sitemap.xml が生成されていません');
-} else {
-  const sitemap = readFileSync(sitemapPath, 'utf8');
-  if (!sitemap.includes(PUBLICATION_URL)) {
-    failures.push(`sitemap.xml に ${PUBLICATION_URL} を含むURLがありません`);
-  }
-}
-
-if (failures.length > 0) {
-  console.error('SEO検査に失敗しました。');
-  for (const failure of failures) console.error(`- ${failure}`);
+if (failures.length) {
+  console.error('SEO検査に失敗しました。\n' + failures.map(failure => '- ' + failure).join('\n'));
   process.exit(1);
 }
-
-console.log(`SEO検査: canonical／JSON-LD／sitemapが ${PUBLICATION_URL} と一致しています。`);
+console.log('SEO検査: ja-JP / en-USのlang・canonical・JSON-LD・OG・Twitter card・sitemapを確認しました。');

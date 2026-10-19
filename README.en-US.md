@@ -33,3 +33,5 @@ Build generates Japanese and English. Prebuild checks document pairs and source 
 ## License
 
 Documentation: CC BY 4.0. Code, workflows, and validators: Apache-2.0. Preserve individual credits and third-party terms. Root LICENSE alone does not relicense prose; see LICENSE-POLICY.ja.md. This reference manuscript does not replace the Japanese original or constitute an equivalent execution Kernel.
+
+The CI toolchain is pinned to Node.js 20.20.2 / npm 10.8.2. See `.nvmrc` and `packageManager`. Build artifacts include the receipt under `.well-known`.

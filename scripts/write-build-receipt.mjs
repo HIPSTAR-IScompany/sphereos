@@ -1,7 +1,7 @@
 // build metadataへsource repositoryとcommitを残す。
 // deploy成功の主張ではなく、build成果物とGit historyを結びつけるためのreceipt。
 import { execSync } from 'node:child_process';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = process.cwd();
@@ -17,11 +17,17 @@ function resolveCommit() {
   }
 }
 
+const publication = JSON.parse(readFileSync(join(root, 'sources/publication-batch-2026-10-19.json'), 'utf8'));
+
 const receipt = {
   schema: 'is-site-publication-receipt/1',
   site_id: SITE_ID,
   repository: process.env.GITHUB_REPOSITORY ?? 'local',
   commit: resolveCommit(),
+  source_pins: publication.source_pins,
+  node_version: process.versions.node,
+  package_manager: 'npm@10.8.2',
+  policy_verification: 'manual-source-review; Python resolver not executed',
   run_id: process.env.GITHUB_RUN_ID ?? null,
   run_attempt: process.env.GITHUB_RUN_ATTEMPT ?? null,
   content_migrated: true,

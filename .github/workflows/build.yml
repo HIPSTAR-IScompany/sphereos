@@ -19,11 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '20'
+          node-version: '20.20.2'
           cache: 'npm'
+
+      - name: Verify pinned toolchain and whitespace
+        run: |
+          test "$(node --version)" = "v20.20.2"
+          test "$(npm --version)" = "10.8.2"
+          git diff --check HEAD^ HEAD
 
       - name: Install dependencies
         run: npm ci
@@ -34,7 +42,7 @@ jobs:
       - name: Domain hardcode check
         run: npm run check:domain-hardcode
 
-      - name: Build (Docusaurus, ja locale)
+      - name: Build (Docusaurus, ja / en-US)
         run: npm run build
         env:
           NODE_ENV: production
@@ -43,6 +51,7 @@ jobs:
         run: |
           test -d build || (echo "build directory missing" && exit 1)
           test -f build/index.html || (echo "index.html missing" && exit 1)
+          test -f build/en/index.html || (echo "en-US index.html missing" && exit 1)
 
       - name: SEO metadata check (canonical / JSON-LD / sitemap)
         run: npm run check:seo
@@ -55,6 +64,7 @@ jobs:
         with:
           name: site-build
           path: build/
+          include-hidden-files: true
           retention-days: 7
 
   # deploy job(Sakura / DNS / vhost)はQ Atlantis Issue #23のscope。

@@ -45,7 +45,7 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     },
     {
       "japanese": "docs/engineering/index.md",
@@ -67,7 +67,7 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     },
     {
       "japanese": "docs/engineering/sdk/README.md",
@@ -89,7 +89,7 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     },
     {
       "japanese": "docs/legacy/README.md",
@@ -104,7 +104,7 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     },
     {
       "japanese": "docs/operations/index.md",
@@ -126,7 +126,7 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     },
     {
       "japanese": "docs/operations/provenance/README.md",
@@ -148,7 +148,7 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     },
     {
       "japanese": "docs/operations/publication-policy.md",
@@ -170,7 +170,9 @@
         }
       ],
       "mode": "edited-explanation",
-      "status": "prepared"
+      "status": "source-published"
     }
-  ]
+  ],
+  "source_commit": "065020ba369675caf5a120e7cc236e7a3af6b2d4",
+  "source_ci": "https://github.com/HIPSTAR-IScompany/sphereos/actions/runs/39250017437"
 }
