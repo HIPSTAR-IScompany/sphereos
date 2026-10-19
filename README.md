@@ -1,64 +1,33 @@
-# SphereOS documentation site
+# SphereOS
 
-状態: `DOCUSAURUS BUILD READY / NOT DEPLOYED / CONTENT NOT MIGRATED`
+World管理・SDK・Sphere-DOSを、日本語正本とen-US解説で読む文書サイトです。[English](README.en-US.md)。
 
-SphereOS Atlantis、ASTRO、IBD／IFD、Instance Ghost、MAGI、World Builder等を、利用者から見た統合SDK documentationとして公開するためのsite repositoryです。
+## 読み始める
 
-Target URL: `https://sphere.i-s.dev/`
+[日本語の入口](docs/start/index.md)／[en-USの入口](i18n/en/docusaurus-plugin-content-docs/current/start/index.md)。著者: 齋藤みつるSaitooMituru-Fusamofu-ふさもふ。公開主体: HIPSTAR-IScompany。
 
-## 責務境界
+2026-10-19の初回文書batchを反映。状態はPARTIAL_PROJECTIONで、旧本文・assetの全量移植は未完了です。Git／build／Sakura公開／DOI発行を分けて記録します。公開対象URLはCIのPUBLICATION_URLで設定します。
 
-- SphereOS固有の上流契約とMAGI実装正本: [`saitoomituru/SphereOS-Atlantis`](https://github.com/saitoomituru/SphereOS-Atlantis)
-- ASTRO実装正本: [`saitoomituru/SphereASTRO`](https://github.com/saitoomituru/SphereASTRO)
-- IBD実装正本: [`saitoomituru/IBD`](https://github.com/saitoomituru/IBD)
-- FAM一般論と横断規約正本: [`saitoomituru/ZeroRoomLab-manifest`](https://github.com/saitoomituru/ZeroRoomLab-manifest)
-- 本repository: 上記を吸収しないdocs projection
+## 正本と来歴
 
-ASTROはstandalone componentです。本siteへ掲載することは、Atlantis bundleを必須化したり、実装ownershipを移したりすることを意味しません。
+[Manifest](https://github.com/saitoomituru/ZeroRoomLab-manifest)を横断規約・研究原典、[SphereOS-Atlantis](https://github.com/saitoomituru/SphereOS-Atlantis)と各componentを実装正本として保持します。Fold NICの確認済み実装正本は[saitoomituru/fold-nic](https://github.com/saitoomituru/fold-nic)。
 
-## 現在地
+[source map](sources/publication-batch-2026-10-19.json)／[日本語・翻訳方針](docs/operations/publication-policy.md)／[移植状態](migration/README.md)。MAGI採用channelはmain、receiptには解決したexact SHAを記録します。Atlantisのfeature／dev branchは採用していません。
 
-- repository／governance scaffold: 設置済み
-- MAGI採用channel: `main`
-- Docusaurus: 実装済み（`npm ci && npm run build`が独立repositoryで再現可能。[`Q Atlantis #22`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/22)）
-- Sakura deploy: 未実装（[`Q Atlantis #23`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/23)。CIはbuild jobのみで、deploy jobは意図的に持たない）
-- content migration: 未着手（[`Q Atlantis #26`](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/26)）
-- `sphere.i-s.dev`既存site退避: User作業待ち
-
-## local preview
+## buildとpreview
 
 ```console
 npm ci
 npm start
-```
-
-`http://localhost:3000/` でplaceholder siteを確認できます。
-
-## build と検査
-
-```console
-npm ci
 npm run typecheck
 npm run check:domain-hardcode
-SITE_ID=sphereos-docs PUBLICATION_URL=https://sphere.i-s.dev npm run build
-SITE_ID=sphereos-docs PUBLICATION_URL=https://sphere.i-s.dev npm run check:seo
-SITE_ID=sphereos-docs npm run receipt:build
+npm run build
+npm run check:seo
+npm run receipt:build
 ```
 
-`SITE_ID` / `PUBLICATION_URL` は`.github/workflows/build.yml`のCI既定値と一致させる。config直書きにせず、常にenv経由で注入する。
-
-## directory
-
-- `docs/start/`: 公開入口
-- `docs/engineering/`: site固有の統合説明
-- `docs/operations/`: 運用、検証、provenance
-- `docs/legacy/`: Q3互換projection。旧原典の正本棚ではない
-- `reference/sphere/`: Sphere系reference projection
-- `glossary/sphere/`: Sphere系用語projection
-- `governance/`: MAGI採用と責務契約
-- `migration/`: Q Atlantisからの移植台帳・receipt
-- `sources/`: source pointer。正本全文を無条件複製しない
+buildは日本語とen-USを生成します。prebuildで日英pair・出典を検査します。production deployは未実装のまま既存Issue #2で追跡し、Sakura設定やDNS値を推測しません。
 
 ## license
 
-code、workflow、validatorはApache-2.0、一般文書・図・FlavorはCC BY 4.0を既定候補とし、個別表示と第三者licenseを優先します。詳細は[`LICENSE-POLICY.ja.md`](LICENSE-POLICY.ja.md)を参照してください。
+文書はCC BY 4.0、code／workflow／validatorはApache-2.0。個別credit・第三者licenseは優先します。root LICENSEのみを根拠に文章を再licenseしません。詳細は[LICENSE-POLICY.ja.md](LICENSE-POLICY.ja.md)。

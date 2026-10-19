@@ -1,0 +1,176 @@
+{
+  "schema": "is-documentation-projection/1",
+  "batch": "2026-10-19",
+  "repository": "HIPSTAR-IScompany/sphereos",
+  "site_id": "sphereos-docs",
+  "canonical_language": "ja-JP",
+  "reference_locale": "en-US",
+  "authorization": "User instruction 2026-10-19T20:55:27+09:00",
+  "scope": "World管理・SDK・Sphere-DOS",
+  "source_pins": {
+    "manifest": "139cc619fcdd62f254074e655ad3fb04e190322d",
+    "atlantis": "bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65",
+    "nic": "44b5d8bb7525d317def6501cc3a5f0951df2e1bc",
+    "q": "39a67f2ed68c3cf826493c7f97462c1552c943dc"
+  },
+  "mode": "edited-explanation-original-sources-retained",
+  "history_extraction": "NOT_PERFORMED",
+  "deployment": "NOT_VERIFIED",
+  "doi": "NOT_ISSUED",
+  "pairs": [
+    {
+      "japanese": "docs/start/index.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/start/index.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/philosophy/spiritual-and-infoton-engineering.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/philosophy/spiritual-and-infoton-engineering.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/SphereOS-Atlantis",
+          "revision": "bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65",
+          "path": "SPHERE-DOS.ja.md",
+          "url": "https://github.com/saitoomituru/SphereOS-Atlantis/blob/bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65/SPHERE-DOS.ja.md",
+          "license": "CC-BY-4.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    },
+    {
+      "japanese": "docs/engineering/index.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/engineering/index.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/SphereOS-Atlantis",
+          "revision": "bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65",
+          "path": "SPHERE-DOS.ja.md",
+          "url": "https://github.com/saitoomituru/SphereOS-Atlantis/blob/bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65/SPHERE-DOS.ja.md",
+          "license": "CC-BY-4.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    },
+    {
+      "japanese": "docs/engineering/sdk/README.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/engineering/sdk/README.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/theory/fam-infoton-reference-boundary.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/theory/fam-infoton-reference-boundary.ja.md",
+          "license": "CC-BY-4.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    },
+    {
+      "japanese": "docs/legacy/README.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/legacy/README.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/theory/sphereos-atlantis-versioning-and-bootstrap.ja.md",
+          "license": "CC-BY-4.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    },
+    {
+      "japanese": "docs/operations/index.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/operations/index.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/SphereOS-Atlantis",
+          "revision": "bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65",
+          "path": "SPHERE-DOS.ja.md",
+          "url": "https://github.com/saitoomituru/SphereOS-Atlantis/blob/bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65/SPHERE-DOS.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/SphereOS-Atlantis",
+          "revision": "bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65",
+          "path": "help/interfaces.json",
+          "url": "https://github.com/saitoomituru/SphereOS-Atlantis/blob/bd8c7a807d5f016eb244c9ffbf39a62cee5e2d65/help/interfaces.json",
+          "license": "Apache-2.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    },
+    {
+      "japanese": "docs/operations/provenance/README.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/operations/provenance/README.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/operations/documentation-maintenance-policy.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/operations/documentation-maintenance-policy.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/operations/default-language-and-translation-policy.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/operations/default-language-and-translation-policy.ja.md",
+          "license": "CC-BY-4.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    },
+    {
+      "japanese": "docs/operations/publication-policy.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/operations/publication-policy.md",
+      "sources": [
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/operations/documentation-maintenance-policy.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/operations/documentation-maintenance-policy.ja.md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "repository": "saitoomituru/ZeroRoomLab-manifest",
+          "revision": "139cc619fcdd62f254074e655ad3fb04e190322d",
+          "path": "docs/operations/default-language-and-translation-policy.ja.md",
+          "url": "https://github.com/saitoomituru/ZeroRoomLab-manifest/blob/139cc619fcdd62f254074e655ad3fb04e190322d/docs/operations/default-language-and-translation-policy.ja.md",
+          "license": "CC-BY-4.0"
+        }
+      ],
+      "mode": "edited-explanation",
+      "status": "prepared"
+    }
+  ]
+}

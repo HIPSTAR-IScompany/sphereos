@@ -78,3 +78,9 @@ git status --short --branch
 ```
 
 machine実装後の検査は#22／#23が追加します。
+
+## 2026-10-19 承認済み文書batch
+
+UserはManifest由来の必要文書を日本語正本・en-US解説としてmainへ展開することを承認した。Q Atlantis #25／#26の2026-10-19 batchとsources/publication-batch-2026-10-19.jsonを照合する。編集・buildはproduction公開待ちから分離する。元sourceを移動・削除せず、実装正本の所有権を変えない。新規branch／Issueをみだりに増やさず、解けない意味・契約conflictは既存Issueへ追記する。
+
+英語は通常解説の参照写本であり、日本語Kernelの同値実装として実行しない。language policyはManifestのdocs/operations/default-language-and-translation-policy.ja.mdを参照する。CLI／MAGI resolverの未実行を成功表示しない。機械検証は利用できるExecution EnvelopeとCIで行い、結果をreceiptへ記録する。

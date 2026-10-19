@@ -24,7 +24,11 @@ const receipt = {
   commit: resolveCommit(),
   run_id: process.env.GITHUB_RUN_ID ?? null,
   run_attempt: process.env.GITHUB_RUN_ATTEMPT ?? null,
-  content_migrated: false,
+  content_migrated: true,
+  content_migration_complete: false,
+  content_status: 'PARTIAL_PROJECTION',
+  publication_batch: '2026-10-19',
+  locales: ['ja-JP', 'en-US'],
 };
 
 mkdirSync(join(buildDir, '.well-known'), { recursive: true });

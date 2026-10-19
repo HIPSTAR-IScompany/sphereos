@@ -1,6 +1,6 @@
 schema_version: 1
 site_id: sphereos-docs
-status: BOOTSTRAP
+status: DOCUMENTATION-PROJECTION
 adoption:
   implementation_repository: https://github.com/saitoomituru/SphereOS-Atlantis
   channel: main

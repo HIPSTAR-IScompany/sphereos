@@ -2,7 +2,7 @@
   "name": "sphereos-docs",
   "version": "0.1.0",
   "private": true,
-  "description": "SphereOS SDK／runtime documentation projection (content not migrated)",
+  "description": "SphereOS 日本語正本・en-US解説（初回文書projection）",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -12,7 +12,9 @@
     "typecheck": "tsc",
     "check:domain-hardcode": "node scripts/check-domain-hardcode.mjs",
     "check:seo": "node scripts/check-seo.mjs",
-    "receipt:build": "node scripts/write-build-receipt.mjs"
+    "receipt:build": "node scripts/write-build-receipt.mjs",
+    "check:publication": "node scripts/check-publication.mjs",
+    "prebuild": "npm run check:publication"
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",

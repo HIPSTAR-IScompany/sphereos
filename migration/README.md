@@ -1,5 +1,5 @@
-# Migration
+# 文書移植batch
 
-Q Atlantisからの移植は[親Issue #19](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/19)、台帳は[#25](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/25)、SphereOS batchは[#26](https://github.com/HIPSTAR-IScompany/quantaril_cloud_QAtlantis/issues/26)で管理します。
+2026-10-19のUser指示とQ Atlantis #25／#26に基づき、Manifestの必要情報を日本語正本・en-US解説として編纂した。source mapは[sources/publication-batch-2026-10-19.json](../sources/publication-batch-2026-10-19.json)。旧原文を移動せず、出典commitを保持する編集projectionであり、history extraction済みとは表示しない。
 
-現在は`CONTENT NOT MIGRATED`です。ledger、source revision、license、asset参照、公開receiptが揃う前に旧pathを削除しません。
+状態: PARTIAL_PROJECTION。buildはActionsの当該commitで確認する。旧文書・asset全量移植、URL cutover、production公開は別工程。deployは既存Issue #2、残りの本文はQ Atlantis #26へ集約する。
