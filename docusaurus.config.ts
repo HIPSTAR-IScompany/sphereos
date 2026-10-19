@@ -82,6 +82,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     metadata: [
+      { property: 'og:type', content: 'website' },
       { name: 'author', content: '齋藤みつるSaitooMituru-Fusamofu-ふさもふ' },
       { property: 'og:site_name', content: 'SphereOS' },
     ],
